@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        img = findViewById(R.id.imgImage);
         btnClick = findViewById(R.id.click);
 
         btnClick.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CODE) {
             if (resultCode == RESULT_OK) {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                img.setImageBitmap(bitmap);
+
+                Intent intent = new Intent();
+                intent.putExtra("check_Image",data);
+                //img.setImageBitmap(bitmap);
             }
         }
     }

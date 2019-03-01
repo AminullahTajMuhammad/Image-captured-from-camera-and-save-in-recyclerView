@@ -2,6 +2,8 @@ package com.amin.imageload;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.MyViewHolder> {
@@ -32,7 +35,10 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.MyViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+        Intent intent = new Intent();
+        Bitmap bitmap = (Bitmap) intent.getExtras().get("check_Image");
 
+        myViewHolder.imgImage.setImageBitmap(bitmap);
     }
 
     @Override
@@ -42,10 +48,12 @@ public class ImageAdapter  extends RecyclerView.Adapter<ImageAdapter.MyViewHolde
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView
+        ImageView imgImage;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            imgImage = itemView.findViewById(R.id.image);
         }
     }
 }
